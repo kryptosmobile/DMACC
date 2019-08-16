@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id = "com.campuseai.dmacc" version   = "2.0.8">
+        id = "com.campuseai.dmacc" version   = "2.0.9">
         <name>DMACC</name>
         <description>Dmacc mobile Apps</description>
         <author href="http://kryptosmobile.com" email="info@kryptosmobile.com">Unifyed Team</author>
@@ -121,10 +121,10 @@
         
         
          <!-- ios sms plugin -->
-        <plugin spec="https://github.com/DevendraSinghNagar/cordova-sms-all-devices-plugin.git" source="git" />
+        <!--<plugin spec="https://github.com/DevendraSinghNagar/cordova-sms-all-devices-plugin.git" source="git" />-->
 
         <!-- Android sms plugin -->
-        <gap:plugin name="cordova-plugin-sms" source="npm" />
+        <!--<gap:plugin name="cordova-plugin-sms" source="npm" />-->
         
         
         
