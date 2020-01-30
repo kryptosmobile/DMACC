@@ -1,5 +1,5 @@
 {
-  "version": 1294,
+  "version": 1297,
   "tenantid": "DMACC",
   "mobappid": 53,
   "appName": "myDmacc",
@@ -992,58 +992,6 @@
       ]
     },
     {
-      "id": 95644,
-      "name": "Alertus",
-      "displayname": "Blackboard Instructor",
-      "logo": "DMACC/Alertus.png",
-      "logourl": "DMACC/Alertus.png",
-      "description": "Alertus",
-      "appFeatureType": "Public",
-      "roles": null,
-      "showInDock": false,
-      "showInHome": true,
-      "networkrequired": true,
-      "analytics": true,
-      "pages": 
-      [
-        {
-          "pageid": "Alertus",
-          "pageTemplate": "<div><\/div>",
-          "pageprocessor": "function pageprocessorAlertus(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n  var plugins = cordova.require(\"cordova/plugin_list\").metadata;\r\n\r\n  if (typeof plugins['com.venkykowshik.startapp'] === \"undefined\") {\r\n\r\n    navigator.notification.alert(\"Please update your app to use this feature\", function() {\r\n      window.location.href = \"index.html#home\";\r\n      $.unblockUI();\r\n      //$location.path(\"/home\");\r\n    }, \"Update required\", \"OK\");\r\n  } else {\r\n    if (window.device.platform == \"iOS\") {\r\n      var iosUri = pagedef.iosuri;\r\n      navigator.startApp.check(iosUri, function(message) { /* success */\r\n          navigator.startApp.start(iosUri, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              console.log(error);\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.itunesurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else if (window.device.platform == \"Android\") {\r\n      var androidpackage = pagedef.androidpackage\r\n      navigator.startApp.check(androidpackage, function(message) { /* success */\r\n          navigator.startApp.start(androidpackage, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              navigator.notification.alert(\"Your device isn't compatible with this version\");\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.playstoreurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else {\r\n      apprise(\"This feature is not available on Emulator\", {\r\n        \"verify\": false,\r\n        \"textYes\": \"Ok\"\r\n      }, function(r) {});\r\n    }\r\n\r\n\r\n    $scope.loadurl = function(url) {\r\n      if (window.device) {\r\n        $.blockUI();\r\n      }\r\n      var iabRef = window.open(url, device.platform == \"Android\" ? \"_system\" : \"_blank\", \"location=no,hidden=yes\");\r\n      var hideBlockUi = function() {\r\n        iabRef.show();\r\n        $.unblockUI();\r\n      };\r\n      var iabClose = function(data) {\r\n        window.location.href = \"index.html#home\";\r\n        $.unblockUI();\r\n      };\r\n      iabRef.addEventListener(\"exit\", iabClose);\r\n      var loadStop = function(data) {\r\n        hideBlockUi();\r\n      };\r\n      iabRef.addEventListener(\"loadstop\", loadStop);\r\n    }\r\n  }\r\n}",
-          "androidpackage": "com.blackboard.android.bbinstructor",
-          "playstoreurl": "https://play.google.com/store/apps/details?id=com.blackboard.android.bbinstructor",
-          "iosuri": "://bbinstructor",
-          "itunesurl": "https://itunes.apple.com/us/app/blackboard-instructor/id1088457824?mt=8"
-        }
-      ]
-    },
-    {
-      "id": 3563,
-      "name": "BBLearn2",
-      "displayname": "Blackboard Student",
-      "logo": "DMACC/BBLearn2.png",
-      "logourl": "DMACC/BBLearn2.png",
-      "description": "Blackboard",
-      "appFeatureType": "Public",
-      "roles": null,
-      "showInDock": false,
-      "showInHome": true,
-      "networkrequired": true,
-      "analytics": true,
-      "pages": 
-      [
-        {
-          "pageid": "BBLearn2",
-          "pageTemplate": "<div><\/div>",
-          "playstoreurl": "https://play.google.com/store/apps/details?id=com.blackboard.android.bbstudent",
-          "pageprocessor": "function pageprocessorBBLearn2(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n  var plugins = cordova.require(\"cordova/plugin_list\").metadata;\r\n\r\n  if (typeof plugins['com.venkykowshik.startapp'] === \"undefined\") {\r\n\r\n    navigator.notification.alert(\"Please update your app to use this feature\", function() {\r\n      window.location.href = \"index.html#home\";\r\n      $.unblockUI();\r\n      //$location.path(\"/home\");\r\n    }, \"Update required\", \"OK\");\r\n  } else {\r\n    if (window.device.platform == \"iOS\") {\r\n      var iosUri = pagedef.iosuri;\r\n      navigator.startApp.check(iosUri, function(message) { /* success */\r\n          navigator.startApp.start(iosUri, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              console.log(error);\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.itunesurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else if (window.device.platform == \"Android\") {\r\n      var androidpackage = pagedef.androidpackage\r\n      navigator.startApp.check(androidpackage, function(message) { /* success */\r\n          navigator.startApp.start(androidpackage, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              navigator.notification.alert(\"Your device isn't compatible with this version\");\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.playstoreurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else {\r\n      apprise(\"This feature is not available on Emulator\", {\r\n        \"verify\": false,\r\n        \"textYes\": \"Ok\"\r\n      }, function(r) {});\r\n    }\r\n\r\n\r\n    $scope.loadurl = function(url) {\r\n      if (window.device) {\r\n        $.blockUI();\r\n      }\r\n      var iabRef = window.open(url, device.platform == \"Android\" ? \"_system\" : \"_blank\", \"location=no,hidden=yes\");\r\n      var hideBlockUi = function() {\r\n        iabRef.show();\r\n        $.unblockUI();\r\n      };\r\n      var iabClose = function(data) {\r\n        window.location.href = \"index.html#home\";\r\n        $.unblockUI();\r\n      };\r\n      iabRef.addEventListener(\"exit\", iabClose);\r\n      var loadStop = function(data) {\r\n        hideBlockUi();\r\n      };\r\n      iabRef.addEventListener(\"loadstop\", loadStop);\r\n    }\r\n  }\r\n}",
-          "itunesurl": "https://itunes.apple.com/us/app/blackboard/id950424861?mt=8",
-          "iosuri": "://bbstudent",
-          "androidpackage": "com.blackboard.android.bbstudent"
-        }
-      ]
-    },
-    {
       "id": 1436,
       "name": "Athletics",
       "displayname": "Athletics",
@@ -1182,4 +1130,4 @@
   "pages": 
   [
   ]
-} 
+}
