@@ -1,5 +1,5 @@
 {
-  "version": 1297,
+  "version": 1301,
   "tenantid": "DMACC",
   "mobappid": 53,
   "appName": "myDmacc",
@@ -655,6 +655,29 @@
       ]
     },
     {
+      "id": 1439,
+      "name": "ConEdu",
+      "displayname": "Continuing Education",
+      "logo": "DMACC/ConEdu.png",
+      "logourl": "DMACC/ConEdu.png",
+      "description": "Continuing Education",
+      "appFeatureType": "Public",
+      "roles": "public",
+      "showInDock": false,
+      "showInHome": true,
+      "networkrequired": true,
+      "analytics": true,
+      "pages": 
+      [
+        {
+          "pageid": "ConEdu",
+          "pageTemplate": "<div><\/div>",
+          "datatemplate": "<style>\r\n  #branding {\r\n    display: none;\r\n  }\r\n<\/style>\r\n<div style=\"margin:10px;padding:10px;background:#ffffff;color:#000000;border-radius:10px;\" \">\r\n    DMACC’s Continuing Education department is committed to lifelong learning, offering non-credit classes dedicated to personal and professional development. Whether you’re looking for something to help you update your skills, advance in your current job, or just learning for the fun of it, check our schedule often – we are always adding something new.\r\n<\/div>\r\n\r\n<div class=\"list-group \" style=\"margin:10px;color:#000;border-radius: 10px;border: 10px solid #ffffff; \">\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://ce.dmacctraining.com/dmacc2/public/store/search.do?navigator=courseCategories') \">\r\n       Course Search<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/conteddesc/Pages/contedstaff.aspx') \">\r\n       Contact Us<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/conteddesc/Pages/ceregistration.aspx'); \">\r\n       Registration Information<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/prospectivestudents/pages/campuses.aspx'); \">\r\n       Campus Locations <i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/departments/physicalplant/Pages/closinginfo.aspx'); \">\r\n        Emergency Closing Info<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n<\/div>",
+          "pageprocessor": "function pageprocessorConEdu(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n    var data1 = $compile($(pagedef.datatemplate))($scope);\r\n    $(\"#appContent\").append(data1);\r\n    $scope.openWebpage = function (site) {\r\n        var iabRef = window.open(site, \"_blank\", \"location=yes,enableViewportScale=yes\");\r\n        var iabClose = function (data) {\r\n            window.location.href = \"index.html#app/ConEdu/ConEdu\";\r\n        };\r\n        iabRef.addEventListener(\"exit\", iabClose);\r\n    }\r\n}"
+        }
+      ]
+    },
+    {
       "id": 1415,
       "name": "TransferProgram",
       "displayname": "Transfer Information",
@@ -674,29 +697,6 @@
           "pageTemplate": "<div><\/div>",
           "pageprocessor": "function pageprocessorTransferProgram(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n  var data1 = $compile($(pagedef.datatemplate))($scope);\r\n  $(\"#appContent\").append(data1);\r\n  $scope.moreinfo = function() {\r\n    var iabRef = window.open(\"https://www.dmacc.edu/advising/Pages/transfer.aspx\", \"_blank\", \"location=yes,enableViewportScale=yes\");\r\n    var iabClose = function(data) {\r\n      window.location.href = \"index.html#app/TransferProgram/TransferProgram\";\r\n    };\r\n    iabRef.addEventListener(\"exit\", iabClose);\r\n  }\r\n}",
           "datatemplate": "<style>\r\n    #branding {\r\n        display: none;\r\n    }\r\n    .navbar-brand {\r\n        padding: 5px !important;\r\n    }\r\n<\/style>\r\n<div content-for=\"title\" class=\"hide\">\r\n    <span>Transfer Information<\/span>\r\n<\/div>\r\n\r\n<div style=\"padding:10px;color:#000;text-align:justify;background:#fff;margin:10px;border-radius:10px;\">\r\n    <p>At DMACC, you can tailor your academic experience to suit your career goals and seamlessly transfer to a four-year university. DMACC’s transfer initiative encompasses 42 liberal arts and science career tracks and 17 professional transfer programs, such as law and medicine.<\/p>\r\n\r\n<\/div>\r\n\r\n<div class=\"btn btn-block btn-primary\" ng-click=\"moreinfo();\" style=\"margin:10px;width:auto\">More info<\/div>"
-        }
-      ]
-    },
-    {
-      "id": 1418,
-      "name": "DirectoryDMacc",
-      "displayname": "Directory",
-      "logo": "DMACC/DirectoryDMacc.png",
-      "logourl": "DMACC/DirectoryDMacc.png",
-      "description": "Directory",
-      "appFeatureType": "Public",
-      "roles": "public",
-      "showInDock": false,
-      "showInHome": true,
-      "networkrequired": true,
-      "analytics": true,
-      "pages": 
-      [
-        {
-          "pageid": "DirectoryDMacc",
-          "pageTemplate": "<div><\/div>",
-          "pageprocessor": "function pageprocessorDirectoryDMacc(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n    var iabRef = window.open(pagedef.url, \"_blank\", \"location=yes,enableViewportScale=yes\");\r\n    var iabClose = function(data) {\r\n        window.location.href = \"index.html#home\";\r\n    };\r\n    iabRef.addEventListener(\"exit\", iabClose);\r\n}",
-          "url": "https://www.dmacc.edu/phone/Pages/welcome.aspx"
         }
       ]
     },
@@ -854,6 +854,29 @@
       ]
     },
     {
+      "id": 1418,
+      "name": "DirectoryDMacc",
+      "displayname": "Directory",
+      "logo": "DMACC/DirectoryDMacc.png",
+      "logourl": "DMACC/DirectoryDMacc.png",
+      "description": "Directory",
+      "appFeatureType": "Public",
+      "roles": "public",
+      "showInDock": false,
+      "showInHome": true,
+      "networkrequired": true,
+      "analytics": true,
+      "pages": 
+      [
+        {
+          "pageid": "DirectoryDMacc",
+          "pageTemplate": "<div><\/div>",
+          "pageprocessor": "function pageprocessorDirectoryDMacc(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n    var iabRef = window.open(pagedef.url, \"_blank\", \"location=yes,enableViewportScale=yes\");\r\n    var iabClose = function(data) {\r\n        window.location.href = \"index.html#home\";\r\n    };\r\n    iabRef.addEventListener(\"exit\", iabClose);\r\n}",
+          "url": "https://www.dmacc.edu/phone/Pages/welcome.aspx"
+        }
+      ]
+    },
+    {
       "id": 1016,
       "name": "Youtube1",
       "displayname": "YouTube",
@@ -992,6 +1015,58 @@
       ]
     },
     {
+      "id": 95644,
+      "name": "Alertus",
+      "displayname": "Blackboard Instructor",
+      "logo": "DMACC/Alertus.png",
+      "logourl": "DMACC/Alertus.png",
+      "description": "Alertus",
+      "appFeatureType": "Public",
+      "roles": null,
+      "showInDock": false,
+      "showInHome": true,
+      "networkrequired": true,
+      "analytics": true,
+      "pages": 
+      [
+        {
+          "pageid": "Alertus",
+          "pageTemplate": "<div><\/div>",
+          "pageprocessor": "function pageprocessorAlertus(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n  var plugins = cordova.require(\"cordova/plugin_list\").metadata;\r\n\r\n  if (typeof plugins['com.venkykowshik.startapp'] === \"undefined\") {\r\n\r\n    navigator.notification.alert(\"Please update your app to use this feature\", function() {\r\n      window.location.href = \"index.html#home\";\r\n      $.unblockUI();\r\n      //$location.path(\"/home\");\r\n    }, \"Update required\", \"OK\");\r\n  } else {\r\n    if (window.device.platform == \"iOS\") {\r\n      var iosUri = pagedef.iosuri;\r\n      navigator.startApp.check(iosUri, function(message) { /* success */\r\n          navigator.startApp.start(iosUri, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              console.log(error);\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.itunesurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else if (window.device.platform == \"Android\") {\r\n      var androidpackage = pagedef.androidpackage\r\n      navigator.startApp.check(androidpackage, function(message) { /* success */\r\n          navigator.startApp.start(androidpackage, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              navigator.notification.alert(\"Your device isn't compatible with this version\");\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.playstoreurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else {\r\n      apprise(\"This feature is not available on Emulator\", {\r\n        \"verify\": false,\r\n        \"textYes\": \"Ok\"\r\n      }, function(r) {});\r\n    }\r\n\r\n\r\n    $scope.loadurl = function(url) {\r\n      if (window.device) {\r\n        $.blockUI();\r\n      }\r\n      var iabRef = window.open(url, device.platform == \"Android\" ? \"_system\" : \"_blank\", \"location=no,hidden=yes\");\r\n      var hideBlockUi = function() {\r\n        iabRef.show();\r\n        $.unblockUI();\r\n      };\r\n      var iabClose = function(data) {\r\n        window.location.href = \"index.html#home\";\r\n        $.unblockUI();\r\n      };\r\n      iabRef.addEventListener(\"exit\", iabClose);\r\n      var loadStop = function(data) {\r\n        hideBlockUi();\r\n      };\r\n      iabRef.addEventListener(\"loadstop\", loadStop);\r\n    }\r\n  }\r\n}",
+          "androidpackage": "com.blackboard.android.bbinstructor",
+          "playstoreurl": "https://play.google.com/store/apps/details?id=com.blackboard.android.bbinstructor",
+          "iosuri": "://bbinstructor",
+          "itunesurl": "https://itunes.apple.com/us/app/blackboard-instructor/id1088457824?mt=8"
+        }
+      ]
+    },
+    {
+      "id": 3563,
+      "name": "BBLearn2",
+      "displayname": "Blackboard Student",
+      "logo": "DMACC/BBLearn2.png",
+      "logourl": "DMACC/BBLearn2.png",
+      "description": "Blackboard",
+      "appFeatureType": "Public",
+      "roles": null,
+      "showInDock": false,
+      "showInHome": true,
+      "networkrequired": true,
+      "analytics": true,
+      "pages": 
+      [
+        {
+          "pageid": "BBLearn2",
+          "pageTemplate": "<div><\/div>",
+          "playstoreurl": "https://play.google.com/store/apps/details?id=com.blackboard.android.bbstudent",
+          "pageprocessor": "function pageprocessorBBLearn2(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n  var plugins = cordova.require(\"cordova/plugin_list\").metadata;\r\n\r\n  if (typeof plugins['com.venkykowshik.startapp'] === \"undefined\") {\r\n\r\n    navigator.notification.alert(\"Please update your app to use this feature\", function() {\r\n      window.location.href = \"index.html#home\";\r\n      $.unblockUI();\r\n      //$location.path(\"/home\");\r\n    }, \"Update required\", \"OK\");\r\n  } else {\r\n    if (window.device.platform == \"iOS\") {\r\n      var iosUri = pagedef.iosuri;\r\n      navigator.startApp.check(iosUri, function(message) { /* success */\r\n          navigator.startApp.start(iosUri, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              console.log(error);\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.itunesurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else if (window.device.platform == \"Android\") {\r\n      var androidpackage = pagedef.androidpackage\r\n      navigator.startApp.check(androidpackage, function(message) { /* success */\r\n          navigator.startApp.start(androidpackage, function(message) { /* success */\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            },\r\n            function(error) { /* error */\r\n              navigator.notification.alert(\"Your device isn't compatible with this version\");\r\n              $location.path(\"/home\");\r\n              $.unblockUI();\r\n            });\r\n        },\r\n        function(error) { /* error */\r\n          $scope.loadurl(pagedef.playstoreurl);\r\n          $location.path(\"/home\");\r\n          $.unblockUI();\r\n        });\r\n    } else {\r\n      apprise(\"This feature is not available on Emulator\", {\r\n        \"verify\": false,\r\n        \"textYes\": \"Ok\"\r\n      }, function(r) {});\r\n    }\r\n\r\n\r\n    $scope.loadurl = function(url) {\r\n      if (window.device) {\r\n        $.blockUI();\r\n      }\r\n      var iabRef = window.open(url, device.platform == \"Android\" ? \"_system\" : \"_blank\", \"location=no,hidden=yes\");\r\n      var hideBlockUi = function() {\r\n        iabRef.show();\r\n        $.unblockUI();\r\n      };\r\n      var iabClose = function(data) {\r\n        window.location.href = \"index.html#home\";\r\n        $.unblockUI();\r\n      };\r\n      iabRef.addEventListener(\"exit\", iabClose);\r\n      var loadStop = function(data) {\r\n        hideBlockUi();\r\n      };\r\n      iabRef.addEventListener(\"loadstop\", loadStop);\r\n    }\r\n  }\r\n}",
+          "itunesurl": "https://itunes.apple.com/us/app/blackboard/id950424861?mt=8",
+          "iosuri": "://bbstudent",
+          "androidpackage": "com.blackboard.android.bbstudent"
+        }
+      ]
+    },
+    {
       "id": 1436,
       "name": "Athletics",
       "displayname": "Athletics",
@@ -1024,29 +1099,6 @@
           "pageTemplate": "<div><\/div>",
           "datatemplate": "<div class=\"jumbotron\" style=\"background:transparent;color:#fff;\"><h4 class=\"page-header\">{{feed.title}}<\/h4><p class=\"small\">{{feed.content}}<\/p><p class=\"small\">Published on : {{feed.publishedDate}}<\/p><a class=\"btn btn-primary btn-block\" ng-click=\"openurl();\">View Web Site<\/a><\/div>",
           "pageprocessor": "function pageprocessorAthleticsDetails(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n  var type = $routeParams.type;\r\n  console.log(\"type==\" + type)\r\n  console.log(\"index==\"+$routeParams.index)\r\n  if (type == \"news\") {\r\n    $scope.feed = $rootScope.newsfeeds[$routeParams.index];\r\n    var iabRef = window.open($scope.feed.link, \"_blank\", \"location=no\");\r\n\r\n  } else if (type == \"sch\") {\r\n    $scope.feed = $rootScope.schfeeds[$routeParams.index];\r\n    var iabRef = window.open(\"https://go.dmacc.edu\" + $scope.feed.link, \"_blank\", \"location=no\");\r\n  } else if (type == \"sco\") {\r\n    $scope.feed = $rootScope.scofeeds[$routeParams.index];\r\n    var iabRef = window.open($scope.feed.link, \"_blank\", \"location=no\");\r\n  }\r\n  /*  $scope.openurl = function () {\r\n        window.open($scope.feed.link, \"_blank\", \"location=no\");\r\n    };\r\n    var template = pagedef.datatemplate;\r\n    var data1 = $compile($(template))($scope);\r\n    $(\"#appContent\").append(data1);\r\n    */\r\n\r\n  var iabClose = function(data) {\r\n    window.location.href = \"index.html#Athletics/AthleticsFeed\";\r\n  };\r\n  iabRef.addEventListener(\"exit\", iabClose);\r\n}"
-        }
-      ]
-    },
-    {
-      "id": 1439,
-      "name": "ConEdu",
-      "displayname": "Continuing Education",
-      "logo": "DMACC/ConEdu.png",
-      "logourl": "DMACC/ConEdu.png",
-      "description": "Continuing Education",
-      "appFeatureType": "Public",
-      "roles": "public",
-      "showInDock": false,
-      "showInHome": true,
-      "networkrequired": true,
-      "analytics": true,
-      "pages": 
-      [
-        {
-          "pageid": "ConEdu",
-          "pageTemplate": "<div><\/div>",
-          "datatemplate": "<style>\r\n  #branding {\r\n    display: none;\r\n  }\r\n<\/style>\r\n<div style=\"margin:10px;padding:10px;background:#ffffff;color:#000000;border-radius:10px;\" \">\r\n    DMACC’s Continuing Education department is committed to lifelong learning, offering non-credit classes dedicated to personal and professional development. Whether you’re looking for something to help you update your skills, advance in your current job, or just learning for the fun of it, check our schedule often – we are always adding something new.\r\n<\/div>\r\n\r\n<div class=\"list-group \" style=\"margin:10px;color:#000;border-radius: 10px;border: 10px solid #ffffff; \">\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://ce.dmacctraining.com/dmacc2/public/store/search.do?navigator=courseCategories') \">\r\n       Course Search<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/conteddesc/Pages/contedstaff.aspx') \">\r\n       Contact Us<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/conteddesc/Pages/ceregistration.aspx'); \">\r\n       Registration Information<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/prospectivestudents/pages/campuses.aspx'); \">\r\n       Campus Locations <i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n    <div class=\"list-group-item \" ng-click=\"openWebpage( 'https://www.dmacc.edu/departments/physicalplant/Pages/closinginfo.aspx'); \">\r\n        Emergency Closing Info<i class=\"fa fa-chevron-right pull-right \"><\/i>\r\n    <\/div>\r\n<\/div>",
-          "pageprocessor": "function pageprocessorConEdu(pagedef, $scope, $routeParams, $compile, $http, $rootScope, $sce, $window, $location) {\r\n    var data1 = $compile($(pagedef.datatemplate))($scope);\r\n    $(\"#appContent\").append(data1);\r\n    $scope.openWebpage = function (site) {\r\n        var iabRef = window.open(site, \"_blank\", \"location=yes,enableViewportScale=yes\");\r\n        var iabClose = function (data) {\r\n            window.location.href = \"index.html#app/ConEdu/ConEdu\";\r\n        };\r\n        iabRef.addEventListener(\"exit\", iabClose);\r\n    }\r\n}"
         }
       ]
     },
